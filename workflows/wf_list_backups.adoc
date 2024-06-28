@@ -1,0 +1,86 @@
+---
+sidebar: sidebar 
+permalink: workflows/wf_list_backups.html 
+keywords:  
+summary:  
+---
+= Liste os backups
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Você pode listar os backups que foram criados para um aplicativo gerenciado específico.
+
+
+
+=== Antes de começar
+
+Você deve ter o ID do aplicativo gerenciado para o qual deseja listar os backups. Se necessário, você pode usar o fluxo de trabalho link:wf_list_man_apps.html["Liste os aplicativos gerenciados"] para localizar o aplicativo.
+
+
+
+=== 1. Liste os backups
+
+Execute a seguinte chamada de API REST.
+
+[cols="25,75"]
+|===
+| Método HTTP | Caminho 
+
+
+| OBTER | /Accounts/_id/k8s/v1/managedApps/_id/appBackups 
+|===
+
+
+===== Parâmetros de entrada adicionais
+
+Além dos parâmetros comuns com todas as chamadas de API REST, os seguintes parâmetros também são usados nos exemplos curl para esta etapa.
+
+[cols="25,10,10,55"]
+|===
+| Parâmetro | Tipo | Obrigatório | Descrição 
+
+
+| id da aplicação gerida | Caminho | Sim | Identifica o aplicativo gerenciado que possui os backups listados. 
+|===
+
+
+===== Curl exemplo: Retornar todos os backups para o aplicativo
+
+[source, curl]
+----
+curl --location -i --request GET 'https://astra.netapp.io/accounts/<ACCOUNT_ID>/k8s/v1/managedApps/<MANAGED_APP_ID>/appBackups' --header 'Accept: */*' --header 'Authorization: Bearer <API_TOKEN>'
+----
+
+
+===== Exemplo de saída JSON
+
+[source, json]
+----
+{
+  "items": [
+    {
+      "type": "application/astra-appBackup",
+      "version": "1.0",
+      "id": "ed39fdb0-12db-497b-9e46-20036c1fb0d2",
+      "name": "mariadb-mariadb-backup-20210617175900",
+      "state": "completed",
+      "stateUnready": [],
+      "bytesDone": 0,
+      "percentDone": 100,
+      "metadata": {
+        "labels": [],
+        "creationTimestamp": "2021-06-17T17:59:09Z",
+        "modificationTimestamp": "2021-06-17T17:59:09Z",
+        "createdBy": "fb093413-b6fc-4a64-a48a-afc32ada8537"
+      }
+    }
+  ],
+  "metadata": {}
+}
+----

@@ -1,0 +1,22 @@
+---
+section: workflows_infra
+title: Workflows de infraestrutura
+entries:
+- title: Antes de começar
+  url: "/workflows_infra/workflows_infra_before.html"
+- title: Identidade e acesso
+  entries:
+  - title: Listar usuários
+    url: "/workflows_infra/wf_list_users.html"
+- title: Baldes
+  entries:
+  - title: Listar buckets
+    url: "/workflows_infra/wf_list_buckets.html"
+- title: Armazenamento
+  entries:
+  - title: Listar backends de armazenamento
+    url: "/workflows_infra/wf_list_storage_backends.html"
+- title: Clusters
+  entries:
+  - title: Listar clusters gerenciados
+    url: "/workflows_infra/wf_list_man_clusters.html"
